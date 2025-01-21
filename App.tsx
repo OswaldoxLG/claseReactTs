@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+//import { UseEffectScreen } from "./src/screens/UseEffectScreen"; 
+//import { FormScreen } from "./src/screens/FormScreen";
+import MiPrimerComponente from "./src/screens/MiPrimerComponente";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+interface Props {
+  nombre: string,
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const User: Props = {
+  nombre: "Karen"
+}
+
+const App = ({nombre}:Props) => {
+
+  return(
+    <SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <MiPrimerComponente
+        nombre="Karen"
+      />
+      <MiPrimerComponente
+        nombre={User.nombre}
+      />
+
+      <MiPrimerComponente
+        {...User}
+      />
+    </SafeAreaView>
+    </SafeAreaProvider>
+  );
+}
+export default App;
