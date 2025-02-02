@@ -1,34 +1,17 @@
 import React from "react";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { PokemonNavigator } from "./src/navigator/PokemonNavigator";
 //import { UseEffectScreen } from "./src/screens/UseEffectScreen"; 
 //import { FormScreen } from "./src/screens/FormScreen";
-import MiPrimerComponente from "./src/screens/MiPrimerComponente";
+//import { StackNavigator } from "./src/navigator/StackNavigator";
+//import { PokemonHomeScreen } from "./src/screens/pokeapi/PokemonHomeScreen";
 
-interface Props {
-  nombre: string,
-}
-
-const User: Props = {
-  nombre: "Karen"
-}
-
-const App = ({nombre}:Props) => {
-
+const App = () => {
   return(
-    <SafeAreaProvider>
-    <SafeAreaView style={{ flex: 1 }}>
-      <MiPrimerComponente
-        nombre="Karen"
-      />
-      <MiPrimerComponente
-        nombre={User.nombre}
-      />
-
-      <MiPrimerComponente
-        {...User}
-      />
-    </SafeAreaView>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <PokemonNavigator/>
+    </NavigationContainer>
   );
 }
 export default App;

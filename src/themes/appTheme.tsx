@@ -2,7 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const appTheme = StyleSheet.create({
   globalMarging:{
-    marginHorizontal: 20,
+    marginHorizontal: 10,
+    marginTop: 30,
+    borderRadius: 10
+
   },
   globalContainer:{
     alignItems: "center",
@@ -11,8 +14,9 @@ export const appTheme = StyleSheet.create({
     backgroundColor: "violet"
   },
   title:{
-    fontSize: 30, 
-    marginBottom: 10  
+    fontFamily: "arial",
+    fontSize: 26, 
+    marginBottom: 15  
   },
   input:{
     textDecorationColor:"black",
