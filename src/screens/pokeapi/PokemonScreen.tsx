@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { RootStackPokemonParams } from "../../navigator/PokemonNavigator";
 import { UseTypeColorPokemon } from "../../hooks/useTypeColorPokemon";
 import { StackScreenProps } from "@react-navigation/stack";
 import { PokemonDetail } from "../../components/PokemonDetail";
 import { usePokemon } from "../../hooks/usePokemon";
-
+import { AuthContext } from "../../context/AuthContext";
 
 interface Props extends StackScreenProps<RootStackPokemonParams, "PokemonScreen"> {}
 
 export const PokemonScreen = ( { navigation, route }: Props ) => {
   
+  const { authState} = useContext(AuthContext);
+
   const { NewPokemonList } = route.params;
   const { id, name, picture } = NewPokemonList;
   const { color, isLoading } = UseTypeColorPokemon( `${ id }` );
@@ -54,6 +56,7 @@ export const PokemonScreen = ( { navigation, route }: Props ) => {
                 style={ styles.pokemonName }
               >
                 { name } { "\n#"+id}
+                { authState.username }
               </Text>
             </View>
           </TouchableOpacity>

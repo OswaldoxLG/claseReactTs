@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-interface FormData {
+export interface FormData {
   username: string,
   password: string,
   cp: string
@@ -16,6 +17,8 @@ interface useFormHook{
 
 export const useFormHook = (): useFormHook => {
   
+  const { setForm } = useContext(AuthContext);
+
   const initialState: FormData = {
     username: '', 
     password: '',
@@ -35,6 +38,7 @@ export const useFormHook = (): useFormHook => {
   const handleSubmit = () => {
     setFormList( (prevList) => [...prevList, formData] );
     setFormData( initialState );
+    setForm( formData );
   }
   
   return { formData, formList, handleInputChange, handleSubmit };
