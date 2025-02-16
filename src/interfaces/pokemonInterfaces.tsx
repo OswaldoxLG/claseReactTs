@@ -10,6 +10,7 @@ export interface Result {
   name: string;
   url: string
 } 
+
 export interface NewPokemonList {
   id: number | string;
   name: string;

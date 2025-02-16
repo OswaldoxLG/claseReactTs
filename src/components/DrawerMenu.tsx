@@ -79,6 +79,15 @@ export const DrawerMenu = ( { navigation } : DrawerContentComponentProps ) => {
               Formulario
             </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={ appTheme.menuBtn}
+            onPress={ () => navigation.navigate("TareaNavigator")}
+          >
+            <Text style={ appTheme.texBtn }>
+              CRUD Tareas
+            </Text>
+          </TouchableOpacity>
           
         </View>
       </DrawerContentScrollView>

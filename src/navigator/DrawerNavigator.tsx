@@ -3,15 +3,17 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useWindowDimensions } from "react-native";
 import { StackNavigator } from "./StackNavigator";
 import { PokemonNavigator } from "./PokemonNavigator";
+import { TareaNavigator } from "./TareaNavigator";
 import { SettingsScreen } from "../screens/SettingsScreen";
 import { DrawerMenu } from "../components/DrawerMenu";
 import { FormScreen } from "../screens/FormScreen";
 
 export type RootDrawerParams = {
-  StackNavigator: undefined;
+  StackNavigator:   undefined;
   PokemonNavigator: undefined;
-  SettingsScreen: undefined;
-  FormScreen: undefined;
+  TareaNavigator:   undefined;
+  SettingsScreen:   undefined;
+  FormScreen:       undefined;
 }
 
 const Drawer = createDrawerNavigator<RootDrawerParams>();
@@ -57,6 +59,12 @@ const Navigator = () => {
         name= "FormScreen"
         options={{ title: "Formulario" }}
         component={ FormScreen }
+      />
+
+      <Drawer.Screen
+        name= "TareaNavigator"
+        options={{ title: "TareaNavigator" }}
+        component={ TareaNavigator }
       />
     </Drawer.Navigator>
   );

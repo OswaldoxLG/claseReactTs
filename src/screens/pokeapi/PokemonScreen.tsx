@@ -56,7 +56,7 @@ export const PokemonScreen = ( { navigation, route }: Props ) => {
                 style={ styles.pokemonName }
               >
                 { name } { "\n#"+id}
-                { authState.username }
+                { authState.UserName }
               </Text>
             </View>
           </TouchableOpacity>

@@ -15,8 +15,10 @@ export const appTheme = StyleSheet.create({
   },
   title:{
     fontFamily: "arial",
-    fontSize: 26, 
-    marginBottom: 15  
+    fontSize: 28, 
+    marginBottom: 15,  
+    marginHorizontal: 15,
+    marginTop: 10
   },
   input:{
     textDecorationColor:"black",
