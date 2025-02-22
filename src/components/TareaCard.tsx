@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { TareasResponse } from "../interfaces/tareasInterfaces";
 
 interface Props {
@@ -7,6 +8,8 @@ interface Props {
 }
 
 export const TareaCard = ( { tarea }:Props) => {
+
+  const navigation = useNavigation();
 
   const { width } = Dimensions.get("window");
 
@@ -26,6 +29,7 @@ export const TareaCard = ( { tarea }:Props) => {
     <TouchableOpacity
       key={ `${tarea._id}${tarea.__v}` }
       activeOpacity={ 0.9 }
+      onPress={ () => navigation.navigate('FormTarea', { tarea }) }
     >
       <View
         style={{

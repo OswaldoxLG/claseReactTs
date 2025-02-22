@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { pandoraApi } from "../api/pandoraApi";
 import { useTareaApi } from "./useTareaApi";
 
-const { createTarea, updateTarea } = useTareaApi();
+
 
 export interface FormData {
   _id: string;
@@ -33,17 +33,24 @@ const formReducer = ( state: FormData, action: Action ) => {
 }
 
 export const useFormTarea = () => {
+
+  const {createTarea, updateTarea, deleteTarea } = useTareaApi();
+
   const [ state, dispatch ] = useReducer( formReducer, initialStateForm );
 
   const handleInputChange = ( fieldName: keyof FormData, value: string ) => {
     dispatch({ type: "handleInputChange", payload: { fieldName, value } })
   }
 
-  const  handleSubmit = () => {
+  const handleSubmit = () => {
     ( state._id === '' )
     ? createTarea( state ) 
     : updateTarea( state );
   }
 
-  return { state, handleInputChange };
+  const handleDelete = () => {
+    deleteTarea( state );
+  }
+
+  return { state, handleInputChange, handleSubmit, handleDelete };
 }

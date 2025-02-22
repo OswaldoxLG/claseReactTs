@@ -2,10 +2,11 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { FormTarea } from "../screens/tarea/FormTarea";
 import { HomeTarea } from "../screens/tarea/HomeTarea";
+import { TareasResponse } from "../interfaces/tareasInterfaces";
 
 export type RootStackTareasParams = {
   HomeTarea: undefined;
-  FormTarea: undefined;
+  FormTarea: {tarea: TareasResponse};
 }
 export const TareaNavigator = () => {
     const Stack = createStackNavigator<RootStackTareasParams>();
