@@ -88,6 +88,24 @@ export const DrawerMenu = ( { navigation } : DrawerContentComponentProps ) => {
               CRUD Tareas
             </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={ appTheme.menuBtn}
+            onPress={ () => navigation.navigate("ImagePickerScreen")}
+          >
+            <Text style={ appTheme.texBtn }>
+              Cargar Imagenes
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={ appTheme.menuBtn}
+            onPress={ () => navigation.navigate("UserNavigator")}
+          >
+            <Text style={ appTheme.texBtn }>
+              CRUD Usuarios
+            </Text>
+          </TouchableOpacity>
           
         </View>
       </DrawerContentScrollView>

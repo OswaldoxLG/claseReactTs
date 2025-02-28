@@ -26,7 +26,7 @@ export const appTheme = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 25,
-    height: 25,
+    height: 60,
     width: 280,
     margin: 12,
     borderWidth: 5,
