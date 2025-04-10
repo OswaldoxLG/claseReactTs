@@ -12,7 +12,7 @@ export const UserNavigator = () => {
     const Stack = createStackNavigator<RootStackUserParams>();
   return(
     <Stack.Navigator
-    initialRouteName='FormUserScreen'
+    initialRouteName='HomeUserScreen'
     screenOptions={{
       headerMode: 'float',
       headerShown: false,

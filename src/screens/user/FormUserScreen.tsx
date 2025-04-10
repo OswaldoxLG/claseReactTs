@@ -23,7 +23,7 @@ interface Props extends StackScreenProps<RootStackUserParams, 'FormUserScreen'> 
       //si existe un usuario en la ruta, se cargan los datos en el formulario
       const usuario = route.params?.user;
       if( usuario ){
-        handleInputChange('_id_user', usuario._id_user);
+        handleInputChange('id_user', usuario.id_user);
         handleInputChange('email', usuario.email);
         handleInputChange('username', usuario.username);
         handleInputChange('password', usuario.password);
@@ -46,7 +46,8 @@ interface Props extends StackScreenProps<RootStackUserParams, 'FormUserScreen'> 
           mediaTypes: ['images'],
           allowsEditing: true,
           aspect: [4,3],
-          quality: 0.9,
+          quality: 0.5,
+          //allowsMultipleSelection: true
         });
         ( !result.canceled ) && ( () => {
           convertImageToBase64( result.assets[0].uri );
@@ -75,7 +76,7 @@ interface Props extends StackScreenProps<RootStackUserParams, 'FormUserScreen'> 
             }}
           >
             {
-              ( state._id_user !== '' ) && (
+              ( state.id_user !== '' ) && (
                 <BtnTouch
                   title="Eliminar"
                   onPress={ () => {
@@ -94,6 +95,7 @@ interface Props extends StackScreenProps<RootStackUserParams, 'FormUserScreen'> 
             <TextInput
               style={appTheme.input}
               value={state.email}
+              textContentType="emailAddress"
               onChangeText= { ( text ) => handleInputChange('email', text) }
               placeholder="Email"
             />
@@ -105,7 +107,9 @@ interface Props extends StackScreenProps<RootStackUserParams, 'FormUserScreen'> 
             />
             <TextInput
               style={appTheme.input}
-              value=""
+              value={ state.password }
+              textContentType="password"
+              secureTextEntry={ true }
               onChangeText= { ( text ) => handleInputChange('password', text) }
               placeholder="Password"
             />
@@ -123,7 +127,7 @@ interface Props extends StackScreenProps<RootStackUserParams, 'FormUserScreen'> 
               )
             }
             <BtnTouch
-              title={ ( state._id_user !== '' ) ? "Actualizar registro" : "Crear registro" }
+              title={ ( state.id_user !== '' ) ? "Actualizar registro" : "Crear registro" }
               onPress={ () => {
                 handleSubmit();
                 navigation.popToTop();

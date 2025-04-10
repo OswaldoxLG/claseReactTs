@@ -2,8 +2,6 @@ import { useReducer } from "react";
 import { pandoraApi } from "../api/pandoraApi";
 import { useTareaApi } from "./useTareaApi";
 
-
-
 export interface FormData {
   _id: string;
   titulo: string;

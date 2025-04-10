@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { useUserApi } from "./useUserApi";
 
 export interface FormUserData{
-  _id_user:         number | string;
+  id_user:         number | string;
   username:         string;
   email:            string;
   password:         string;
@@ -11,7 +11,7 @@ export interface FormUserData{
 
   //valor inicial del formulario
   export const InitialStateUserForm: FormUserData = {
-    _id_user: '',
+    id_user: '',
     username: '',
     email:    '',
     password: '',
@@ -45,7 +45,7 @@ export interface FormUserData{
     }
 
     const handleSubmit = () => {
-      ( state._id_user !== '' )
+      ( state.id_user !== '' )
       ? updateUser( state )
       : createUser( state );
     }

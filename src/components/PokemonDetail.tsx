@@ -1,21 +1,20 @@
 import React from "react";
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
 import { PokemonSimple } from "../interfaces/pokemonInterfaces";
 import { UseTypeColorPokemon } from "../hooks/useTypeColorPokemon";
 import { appTheme } from "../themes/appTheme";
 
-interface Props{
+interface Props {
   pokemon: PokemonSimple;
 }
 
-export const PokemonDetail = ( {pokemon}:Props) => {
-
-  const { color, isLoading } = UseTypeColorPokemon( `${pokemon.id}` );
+export const PokemonDetail = ({ pokemon }: Props) => {
+  const { color, isLoading } = UseTypeColorPokemon(`${pokemon.id}`);
 
   return (
     <ScrollView
       style={{
-        ...StyleSheet.absoluteFillObject
+        ...StyleSheet.absoluteFillObject,
       }}
     >
       <View>
@@ -29,25 +28,21 @@ export const PokemonDetail = ( {pokemon}:Props) => {
         >
           Types
         </Text>
-        <View
-          style={{ flexDirection: "row" }}
-        >
-          {
-            pokemon.types.map( ({ type }) => (
-              <Text
-                key={ type.name }
-                style={{
-                  fontSize: 20,
-                  marginRight: 10,
-                  marginHorizontal: 20,
-                  backgroundColor: (isLoading) ? "gray" : color[0],
-                  borderRadius: 5
-                }}
-              >
-                { type.name}
-              </Text>
-            ))
-          }
+        <View style={{ flexDirection: "row" }}>
+          {pokemon.types.map(({ type }) => (
+            <Text
+              key={type.name}
+              style={{
+                fontSize: 20,
+                marginRight: 10,
+                marginHorizontal: 20,
+                backgroundColor: isLoading ? "gray" : color[0],
+                borderRadius: 5,
+              }}
+            >
+              {type.name}
+            </Text>
+          ))}
         </View>
         {/*Peso*/}
         <View>
@@ -65,7 +60,7 @@ export const PokemonDetail = ( {pokemon}:Props) => {
               marginHorizontal: 20,
             }}
           >
-            { pokemon.weight + "lb" }
+            {pokemon.weight + "lb"}
           </Text>
         </View>
         {/* Sprites */}
@@ -78,93 +73,86 @@ export const PokemonDetail = ( {pokemon}:Props) => {
           >
             Sprites
           </Text>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          >
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <Image
               style={{
-                  height:100,
-                  width:100,
+                height: 100,
+                width: 100,
               }}
               source={{
-                uri: pokemon.sprites.front_default
+                uri: pokemon.sprites.front_default,
               }}
             />
             <Image
               style={{
-                  height:100,
-                  width:100,
+                height: 100,
+                width: 100,
               }}
               source={{
-                uri: pokemon.sprites.back_default
+                uri: pokemon.sprites.back_default,
               }}
             />
             <Image
               style={{
-                  height:100,
-                  width:100,
+                height: 100,
+                width: 100,
               }}
               source={{
-                uri: pokemon.sprites.front_shiny
+                uri: pokemon.sprites.front_shiny,
               }}
             />
             <Image
               style={{
-                  height:100,
-                  width:100,
+                height: 100,
+                width: 100,
               }}
               source={{
-                uri: pokemon.sprites.back_shiny
+                uri: pokemon.sprites.back_shiny,
               }}
             />
             <Image
               style={{
-                  height:100,
-                  width:100,
+                height: 100,
+                width: 100,
               }}
               source={{
-                uri: pokemon.sprites.back_shiny
+                uri: pokemon.sprites.back_shiny,
               }}
             />
             <Image
               style={{
-                  height:100,
-                  width:100,
+                height: 100,
+                width: 100,
               }}
               source={{
-                uri: pokemon.sprites.back_shiny
+                uri: pokemon.sprites.back_shiny,
               }}
             />
-            {
-              (pokemon.sprites.front_female) && (
-                <Image
+            {pokemon.sprites.front_female && (
+              <Image
                 style={{
-                    height:100,
-                    width:100,
+                  height: 100,
+                  width: 100,
                 }}
                 source={{
-                  uri: pokemon.sprites.front_female
+                  uri: pokemon.sprites.front_female,
                 }}
               />
-              )
-            }
-                        {
-              (pokemon.sprites.back_female) && (
-                <Image
+            )}
+            {pokemon.sprites.back_female && (
+              <Image
                 style={{
-                    height:100,
-                    width:100,
+                  height: 100,
+                  width: 100,
                 }}
                 source={{
-                  uri: pokemon.sprites.back_female
+                  uri: pokemon.sprites.back_female,
                 }}
               />
-              )
-            }
+            )}
           </ScrollView>
         </View>
       </View>
     </ScrollView>
   );
-}
+};

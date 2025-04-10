@@ -9,14 +9,15 @@ export const useUserApi = () => {
 
   const apiUrl: string = 'http://192.168.1.2:3000/api/v1/user';
 
-  const loadUser = async () => {
-    setIsLoading(false);
+  const loadUsers = async () => {
+    setIsLoading(true);
     const response = await pandoraApi.get<UserResponse>(apiUrl);
     setListUser(response.data);
-    setIsLoading(true);
+    setIsLoading(false);
   }
 
   const createUser = async (data: FormUserData) => {
+    console.log(data);
     const dataBody = {
       username: data.username,
       email: data.email,
@@ -39,21 +40,21 @@ export const useUserApi = () => {
       ? { ...dataBody, password: data.password } 
       : dataBody;
 
-    await pandoraApi.patch( apiUrl + `/${data._id_user}`, dataPass );
+    await pandoraApi.patch( apiUrl + `/${data.id_user}`, dataPass );
   }
 
   const deleteUser = async (data: FormUserData) => {
-    await pandoraApi.delete( apiUrl + `/${data._id_user}` );
+    await pandoraApi.delete( apiUrl + `/${data.id_user}` );
   }
 
   useEffect(() => {
-    loadUser();
+    loadUsers();
   }, []);
 
   return {
     isLoading,
     listUser,
-    loadUser,
+    loadUsers,
     createUser,
     updateUser,
     deleteUser

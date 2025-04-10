@@ -1,8 +1,10 @@
 export interface UserResponse {
-  _id_user:         number;
+  id_user:          number | string;
   username:         string;
   email:            string;
   password:         string;
   image:            string;
   update:           string;
 }
+
+export type LoginResponse = UserResponse | false;

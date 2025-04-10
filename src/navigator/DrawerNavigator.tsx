@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext} from "react";
+import { AuthContext } from "../context/AuthContext";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useWindowDimensions } from "react-native";
 import { StackNavigator } from "./StackNavigator";
@@ -9,6 +10,10 @@ import { SettingsScreen } from "../screens/SettingsScreen";
 import { DrawerMenu } from "../components/DrawerMenu";
 import { FormScreen } from "../screens/FormScreen";
 import { ImagePickerScreen } from "../screens/ImagePickerScreen";
+import { LoginScreen } from "../screens/user/LoginScreen";
+import { CharScreen } from "../screens/CharScreen";
+import { SensorDataScreen } from "../screens/SensorDataScreen";
+import { TopTabNavigator } from "./TopTabNavigator";
 
 export type RootDrawerParams = {
   StackNavigator:   undefined;
@@ -18,6 +23,9 @@ export type RootDrawerParams = {
   FormScreen:       undefined;
   ImagePickerScreen:  undefined;
   UserNavigator:    undefined;
+  CharScreen:       undefined;
+  SensorDataScreen: undefined;
+  TopTabNavigator: undefined;
 }
 
 const Drawer = createDrawerNavigator<RootDrawerParams>();
@@ -81,12 +89,29 @@ const Navigator = () => {
         component={ UserNavigator }
       />
 
+      <Drawer.Screen
+        name= "CharScreen"
+        component={ CharScreen }
+      />
+
+      <Drawer.Screen
+        name= "SensorDataScreen"
+        component={ SensorDataScreen }
+      />
+
+      <Drawer.Screen
+        name= "TopTabNavigator"
+        component={ TopTabNavigator }
+      />
     </Drawer.Navigator>
   );
 }
 
-export const DrawerNavigator = () => {
-  return(
-    <Navigator/>
-  )
-}
+  export const DrawerNavigator = () => {
+    const { authState } = useContext( AuthContext );
+    return( authState.isLoggenIn) ? <Navigator/> : <LoginScreen/>
+  }
+
+// export const DrawerNavigator = () => (
+//   <Navigator/>
+// )
